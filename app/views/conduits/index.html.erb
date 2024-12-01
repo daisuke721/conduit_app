@@ -1,0 +1,57 @@
+<div class="home-page">
+  <div class="banner">
+    <div class="container">
+      <h1 class="logo-font">conduit</h1>
+      <p>A place to share your knowledge.</p>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row">
+      <div class="col-md-9">
+        <div class="feed-toggle">
+          <% if flash[:notice] %>
+            <div class="alert alert-success" role="alert">
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+          <ul class="nav nav-pills outline-active">
+            <li class="nav-item">
+              <a class="nav-link" href="">Your Feed</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link active" href="">Global Feed</a>
+            </li>
+          </ul>
+        </div>
+
+        <% @conduits.each do |conduit| %>
+          <div class="article-preview">
+            <%= link_to conduit, class: "preview-link" do %>
+              <h1><%= conduit.title %></h1>
+              <p><%= conduit.introduction %></p>
+              <span>Read more...</span>
+              <ul class="tag-list">
+                <li class="tag-default tag-pill tag-outline"><%= conduit.tag %></li>
+              </ul>
+            <% end %>
+          </div>
+        <% end %>
+
+        <%= link_to 'Create', new_conduit_url, class: "btn btn-lg pull-xs-right btn-primary" %>
+      </div>
+
+      <div class="col-md-3">
+        <div class="sidebar">
+          <p>Popular Tags</p>
+
+          <div class="tag-list">
+            <% @conduits.each do |conduit| %>
+              <a href="" class="tag-pill tag-default" ><%= conduit.tag %></a>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
