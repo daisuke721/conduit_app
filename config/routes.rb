@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get 'conduits/index', to: 'conduits#index'
 
   resources :conduits
