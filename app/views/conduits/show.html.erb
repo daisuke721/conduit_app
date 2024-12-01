@@ -1,0 +1,32 @@
+<div class="article-page">
+  <div class="banner">
+    <div class="container">
+      <h1>How to build webapps that scale</h1>
+
+      <div class="article-meta">
+        <button class="btn btn-sm btn-outline-secondary">
+          <i class="ion-edit"></i><%= link_to "Edit Article", edit_conduit_path %>
+        </button>
+        <button class="btn btn-sm btn-outline-danger">
+          <i class="ion-trash-a"></i><%= link_to "Delete Article", @conduit, method: :delete, data: {confirm:"本当に削除しますか？"} %>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container page">
+    <div class="row article-content">
+      <div class="col-md-12">
+        <p>
+          <%= @conduit.context %>
+        </p>
+        <h2 id="introducing-ionic"><%= @conduit.title %></h2>
+        <p><%= @conduit.introduction %></p>
+        <ul class="tag-list">
+          <li class="tag-default tag-pill tag-outline"><%= @conduit.tag %></li>
+        </ul>
+      </div>
+    </div>
+    <hr />
+  </div>
+</div>
